@@ -1,0 +1,9 @@
+.selected {
+    background-color: red;
+}
+.cannon {
+    margin-left: 2.5px;
+}
+.removecannon {
+    color: grey;
+}

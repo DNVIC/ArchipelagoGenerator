@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="jsmldiv">
+            <p>Insert the jsml file, or a json file outputted previously</p>
+            <input type="file" id="jsmlfile" accept=".jsml,.json">
+            <br>
+            <p>Settings: (ignored if importing json)</p>
+            <label><input type="checkbox" id="cannons">8 stars per level</label>
+            <br> <br>
+            <button id="inputbutton">Create Thingy</button>
+        </div>
+
+        <div id="extradialogstuff">
+            <span id="cannonspan" hidden>
+                <label for="cannonselect">Add a level (incase it has a cannon but no stars)</label>
+                <select name="cannonselect" id="cannonselect"></select> <br>
+                <button id="cannonselectbutton">Add level</button>
+            </span>
+            <br><br>
+        </div>
+
+        <div id="coursesdiv" hidden>
+            <table>
+                <tr id="mainrow">
+                    <td>
+                        <table id="coursestable"></table>
+                    </td>
+                    <td id="mainrequirements">
+                        <p id="selecteditem">Selected: None</p>
+                        <label for="starrequirement">Star Requirement</label> <br>
+                        <input type="number" id="starrequirement"> <br>
+                        <input id="key1" type="checkbox">
+                        <label for="key1">Requires Key 1</label> <br>
+                        <input id="key2" type="checkbox">
+                        <label for="key2">Requires Key 2</label> <br>
+                        <input id="wc" type="checkbox">
+                        <label for="wc">Requires Wing Cap</label> <br>
+                        <input id="vc" type="checkbox">
+                        <label for="vc">Requires Vanish Cap</label> <br>
+                        <input id="mc" type="checkbox">
+                        <label for="mc">Requires Metal Cap</label> <br> <br>
+                        <div class="cannonrequirements" hidden>
+                            <select name="cannons" class="cannons"></select> <br>
+                            <button class="addcannonbutton">Add Cannon Requirement</button>
+                            <div id="cannontemplate" hidden><span>Template Cannon </span><a class="removecannon">✖</a></div>
+                        </div>
+                        <button id="conditionalrequirementbutton" title="These requirements are for cases where you need (for example) either a wing cap or a metal cap. You would add 2 conditional requirements, one for wing cap and one for metal cap. The requirements above are hard requirements.">Add Conditional Requirement</button>
+                        <br>
+                        <button id="saveinfobutton">Save Star Info</button>
+                    </td>
+                    <td id="conditionalrequirementtemplate" hidden>
+                        <p>Conditional Requirement</p>
+                        <label>Star Requirement <br> <input type="number" class="starrequirement"> <br></label>
+                        
+                        <label><input class="key1" type="checkbox"> Requires Key 1</label> <br>
+                        <label><input class="key2" type="checkbox"> Requires Key 2</label> <br>
+                        <label><input class="wc" type="checkbox"> Requires Wing Cap</label> <br>
+                        <label><input class="vc" type="checkbox"> Requires Vanish Cap</label> <br>
+                        <label><input class="mc" type="checkbox"> Requires Metal Cap</label> <br>
+                        <div class="cannonrequirements" hidden>
+                            <select name="cannons" class="cannons"></select> <br>
+                            <button class="addcannonbutton">Add Cannon Requirement</button>
+                        </div>
+                        <button class="removebutton">Remove Conditional Requirement</button>
+                    </td>
+                </tr>
+            </table> <br>
+            <label for="filename">Hack Name</label>
+            <input id="filename" type="text"> <br>
+            <button id="downloadbutton">Download json file</button>
+        </div>
+
+        <a id="downloadFileWhenDone" style="display:none"></a>
+    </body>
+</html> 
