@@ -218,6 +218,7 @@ $(function() {
         }
     }
     $(document).on("click", ".cannon", function() {
+        saveinfo()
         course = $(this).closest("tr").find("p").text()
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
@@ -242,6 +243,7 @@ $(function() {
     })
 
     $(document).on("click", ".star", function() {
+        saveinfo()
         course = $(this).closest("tr").find("p").text()
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
@@ -277,6 +279,7 @@ $(function() {
     })
 
     $(document).on("click", ".level", function() {
+        saveinfo()
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
         $(".removecannon").click()
@@ -325,7 +328,10 @@ $(function() {
         
         return [requirements, conditionalRequirements]
     }
-    $("#saveinfobutton").click(function() {
+    function saveinfo() {
+        if(!($(".selected")[0])) {
+            return
+        }
         if($(".selected").is("p")) {
             course = locationData[$(".selected").text()]
 
@@ -378,7 +384,7 @@ $(function() {
             star["ConditionalRequirements"] = requirementarray[1]
             console.log(requirementarray[1])
         }
-    })
+    }
 
     $("#downloadbutton").click(function () {
         var downloadString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(locationData))
