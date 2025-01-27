@@ -102,14 +102,14 @@ $(function() {
                 }
             } else {
                 var cannons = !$('#cannons').prop("checked")
+                if(cannons) {
+                    locationData["Other"]["Settings"].push("cannons")
+                    //$("#cannonspan").show()
+                }
                 var result = JSON.parse(reader.result) // Parse the result into an object
                 courses = result.courseDescription.concat(result.secretDescription)
                 for (var i in courses) {
                     if(offset = courses[i].offset) {
-                        if(cannons) {
-                            locationData["Other"]["Settings"].push("cannons")
-                            //$("#cannonspan").show()
-                        }
                         console.log(offsetToCourseName[offset])
                         starMask =  courses[i].starMask % 128
                         for(var i in locationData[offsetToCourseName[offset]]["Stars"]) {
@@ -372,10 +372,10 @@ $(function() {
 
             if(course == "Other") {
                 star["exists"] = $("#exists").prop("checked")
-                if(starId = 6) {
+                if(starId == 6) {
                     star["exists"] = true
                 }
-                console.log(star["exists"])
+                console.log(`exists: ${star["exists"]}`)
             }
 
             star["StarRequirement"] = $("#starrequirement").val()
