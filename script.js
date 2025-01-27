@@ -94,7 +94,7 @@ $(function() {
             var filename = $('#jsmlfile').val().split('\\').pop()
             if(filename.endsWith(".json")) {
                 locationData = JSON.parse(reader.result)
-                if(!('settings' in locationData)) {
+                if(!(reader.result.includes("Settings"))) {
                     locationData["Other"]["Settings"] = ["cannons"] //backwards compatibility
                     for(const course of Object.keys(locationData)) {
                         locationData[course]["Cannon"] = {"exists": false}
@@ -126,8 +126,8 @@ $(function() {
                     continue;
                 }
 
+                var course_nospace = course.split(" ").join("_")
                 if(starExists(data["Stars"])) {
-                    var course_nospace = course.split(" ").join("_")
                     var string = course + ": "
                     $("#coursestable").append("<tr id=\""+course_nospace+"\"></tr>")
                     $("#" + course_nospace).append("<td><p class=\"level\">" + course + "</p></tr>")
@@ -148,7 +148,14 @@ $(function() {
 
                     
                 } else {
+                    $("#cannonselect").append("<option>" + course + "</option>")
                     $("#cannonspan").show()
+                }
+                cannon = data["Cannon"]
+                if(cannon["exists"]) {
+                    $(".cannonrequirements").show()
+                    $(".cannons").append("<option value=" +course_nospace + "cannon id=" + course_nospace + "cannon>" + course + " cannon</option>")
+                    existingCannons.push(course)
                 }
             }
             $("#coursestable").append("<tr id=\"Other\"><td><p>Other</p></tr>")
@@ -228,6 +235,7 @@ $(function() {
         requirements = cannon["Requirements"]
         conditionalRequirements = cannon["ConditionalRequirements"]
         fillForm(starRequirement, requirements, conditionalRequirements)
+        console.log("funny" + cannon["exists"])
         if(cannon["exists"]) {
             $("#exists").prop("checked", true)
         }
@@ -333,7 +341,6 @@ $(function() {
             cannon["exists"] = $("#exists").prop("checked")
             var course_nospace = course.split(" ").join("_")
             if(cannon["exists"] && !$(`#${course_nospace}cannon`).length) {
-                console.log("Test13")
                 $(".cannonrequirements").show()
                 $(".cannons").append("<option value=" +course_nospace + "cannon id=" + course_nospace + "cannon>" + course + " cannon</option>")
                 existingCannons.push(course)
