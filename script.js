@@ -110,6 +110,9 @@ $(function() {
                 courses = result.courseDescription.concat(result.secretDescription)
                 for (var i in courses) {
                     if(offset = courses[i].offset) {
+                        if(!offsetToCourseName.hasOwnProperty(offset)) {
+                            continue //ldd broke because there was an invisible course with offset 7
+                        }
                         console.log(offsetToCourseName[offset])
                         starMask =  courses[i].starMask % 128
                         for(var i in locationData[offsetToCourseName[offset]]["Stars"]) {
