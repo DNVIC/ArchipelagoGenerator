@@ -101,23 +101,34 @@ $(function() {
                     }
                 }
             } else {
-                var cannons = !$('#cannons').prop("checked")
-                if(cannons) {
-                    locationData["Other"]["Settings"].push("cannons")
-                    //$("#cannonspan").show()
-                }
                 var result = JSON.parse(reader.result) // Parse the result into an object
                 courses = result.courseDescription.concat(result.secretDescription)
+                var cannons = result.starsShown == 7
+                if(cannons) {
+                    locationData["Other"]["Settings"].push("cannons")
+                } else {
+                    for (var i in locationData) {
+                        locationData[i]["Stars"].push({"exists": false})
+                    }
+                }
                 for (var i in courses) {
                     if(offset = courses[i].offset) {
                         if(!offsetToCourseName.hasOwnProperty(offset)) {
                             continue //ldd broke because there was an invisible course with offset 7
                         }
                         console.log(offsetToCourseName[offset])
-                        starMask =  courses[i].starMask % 128
-                        for(var i in locationData[offsetToCourseName[offset]]["Stars"]) {
-                            if(starMask % (2**(7-i)) >> (6-i)) {
-                                locationData[offsetToCourseName[offset]]["Stars"][6-i]["exists"] = true
+                        starMask =  cannons ? courses[i].starMask % 128 : courses[i].starMask
+                        if(cannons) {
+                            for(var i in locationData[offsetToCourseName[offset]]["Stars"]) {
+                                if(starMask % (2**(7-i)) >> (6-i)) {
+                                    locationData[offsetToCourseName[offset]]["Stars"][6-i]["exists"] = true
+                                }
+                            }
+                        } else {
+                            for(var i in locationData[offsetToCourseName[offset]]["Stars"]) {
+                                if(starMask % (2**(8-i)) >> (7-i)) {
+                                    locationData[offsetToCourseName[offset]]["Stars"][7-i]["exists"] = true
+                                }
                             }
                         }
                     }
@@ -152,7 +163,9 @@ $(function() {
                     
                 } else {
                     $("#cannonselect").append("<option>" + course + "</option>")
-                    $("#cannonspan").show()
+                    if(cannons) {
+                        $("#cannonspan").show()
+                    }
                 }
                 cannon = data["Cannon"]
                 if(cannon["exists"]) {
@@ -169,9 +182,7 @@ $(function() {
                     console.log(i)
                 }
                 $("#Other").append("<td></td>")
-                if(locationData["Other"]["Settings"].includes("cannons")) {
-                    $("#Other").append("<td></td>") //graphics stuff
-                }
+                $("#Other").append("<td></td>") //graphics stuff
                 $("#Other").append("<td><div class=\"star 6\">Victory</div></td>")
             $("#coursesdiv").show()
             $("#jsmldiv").hide()
@@ -390,6 +401,7 @@ $(function() {
     }
 
     $("#downloadbutton").click(function () {
+        saveinfo()
         var downloadString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(locationData))
         $("#downloadFileWhenDone").attr("href", downloadString)
         $("#downloadFileWhenDone").attr("download", camelize($("#filename").val()) + ".json")
