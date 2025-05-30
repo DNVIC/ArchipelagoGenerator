@@ -199,6 +199,9 @@ $(function() {
                 $("#" + prop).prop("checked", true)
             }
         }
+        if($("#actspecificspan").is(":visible") && requirements.includes("actspecific")) {
+            $("#actspecific").prop("checked", true)
+        }
         requirements.forEach((i) => {
             if (i.includes("Cannon")) {
                 i = i.substring(0, i.length - 7)
@@ -237,6 +240,7 @@ $(function() {
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
         $(".removecannon").trigger("click")
+        $("#actspecificspan").hide()
 
         if(!$("#exists").length)  {
             $("#selecteditem").text(`Selected: ${course} Cannon`)
@@ -264,6 +268,7 @@ $(function() {
         starId = parseInt($(this)[0].classList[1])
         $(".removecannon").trigger("click")
         if(course == "Other") {
+            $("#actspecificspan").hide()
             if($(this).text() == "Victory") {
                 $("#selecteditem").text("Selected: Victory")
                 $("#exists").remove()
@@ -280,6 +285,7 @@ $(function() {
             $("#exists").remove()
             $("#existslabel").remove()
             $("#existsbr").remove()
+            $("#actspecificspan").show()
         }
         
         star = locationData[course]["Stars"][starId]
@@ -294,6 +300,7 @@ $(function() {
 
     $(document).on("click", ".level", function() {
         saveinfo()
+        $("#actspecificspan").hide()
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
         $(".removecannon").click()
@@ -315,6 +322,11 @@ $(function() {
         for(const[prop,item] of Object.entries(propToItemName)) {
             if($("#" + prop).prop("checked")) {
                 requirements.push(item)
+            }
+        }
+        if($("#actspecificspan").is(":visible")) {
+            if($("#actspecific").prop("checked")) {
+                requirements.push("actspecific")
             }
         }
         cr = $("#mainrequirements").find(".cannonrequirements")
