@@ -56,33 +56,33 @@ $(function() {
     
     
     locationData = {
-        "Course 1": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 2": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 3": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 4": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 5": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 6": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 7": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 8": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 9": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 10": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 11": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 12": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 13": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 14": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Course 15": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Bowser 1": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Bowser 2": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Bowser 3": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Slide": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Secret 1": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Secret 2": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Secret 3": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Metal Cap": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Wing Cap": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Vanish Cap": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Overworld": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}},
-        "Other": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": true}], "Settings":[]}, // last is always true because it's victory and you need a victory condition.
+        "Course 1": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 2": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 3": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 4": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 5": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 6": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 7": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 8": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 9": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 10": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 11": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 12": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 13": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 14": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Course 15": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Bowser 1": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Bowser 2": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Bowser 3": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Slide": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Secret 1": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Secret 2": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Secret 3": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Metal Cap": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Wing Cap": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Vanish Cap": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Overworld": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}},
+        "Other": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": true}], "Settings":{}}, // last is always true because it's victory and you need a victory condition.
     }
 
     existingCannons = []
@@ -95,22 +95,34 @@ $(function() {
             if(filename.endsWith(".json")) {
                 locationData = JSON.parse(reader.result)
                 if(!(reader.result.includes("Settings"))) {
-                    locationData["Other"]["Settings"] = ["cannons"] //backwards compatibility
+                    locationData["Other"]["Settings"] = {"cannons": true, "prog_key": 0} //backwards compatibility
                     for(const course of Object.keys(locationData)) {
                         locationData[course]["Cannon"] = {"exists": false}
                     }
+                } else {
+                    settings = locationData["Other"]["Settings"]
+                    if(Array.isArray(settings)) {
+                        settings = {"cannons": locationData["Other"]["Settings"].includes("cannons"), "prog_key": 0}
+                        for(const course of Object.keys(locationData)) {
+                            locationData[course]["Troll Star"] = {"exists": false}
+                        }
+                    }
+                    locationData["Other"]["Settings"] = settings
                 }
             } else {
                 var result = JSON.parse(reader.result) // Parse the result into an object
                 courses = result.courseDescription.concat(result.secretDescription)
                 var cannons = result.starsShown == 7
                 if(cannons) {
-                    locationData["Other"]["Settings"].push("cannons")
+                    locationData["Other"]["Settings"].cannons = true
                 } else {
+                    locationData["Other"]["Settings"].cannons = false
                     for (var i in locationData) {
                         locationData[i]["Stars"].push({"exists": false})
                     }
                 }
+                locationData["Other"]["Settings"].prog_key = 0
+                $("#progressivekeys").val(locationData["Other"]["Settings"].prog_key)
                 for (var i in courses) {
                     if(offset = courses[i].offset) {
                         if(!offsetToCourseName.hasOwnProperty(offset)) {
@@ -137,7 +149,7 @@ $(function() {
             
             for(const[course, data] of Object.entries(locationData)) {
                 if(course == "Other") {
-                    continue;
+                    continue
                 }
 
                 var course_nospace = course.split(" ").join("_")
@@ -156,7 +168,9 @@ $(function() {
                         star = data["Stars"][star]
                     }
                     console.log(string)
-                    if(locationData["Other"]["Settings"].includes("cannons")){
+                    
+                    if(locationData["Other"]["Settings"].cannons){
+                        $("#"+ course_nospace).append("<td><img class=\"trollstar\" src=images/troll_star.png /></td>")
                         $("#" + course_nospace).append("<td><img class=\"cannon\" src=images/cannon.png /></td>")
                     }
 
@@ -298,6 +312,29 @@ $(function() {
         }
     })
 
+    $(document).on("click", ".trollstar", function() {
+        saveinfo()
+        course = $(this).closest("tr").find("p").text()
+        $(".selected").removeClass("selected")
+        $(this).addClass("selected")
+        starId = parseInt($(this)[0].classList[1])
+        $(".removecannon").trigger("click")
+        $("#actspecificspan").hide()
+        if(!$("#exists").length)  {
+            $("<input id=\"exists\" type=\"checkbox\"><label id=existslabel for=\"exists\"> Exists</label> <br id=existsbr>").insertBefore("#key1")
+        }
+        $("#selecteditem").text("Selected: " + course + " Troll Star")
+        
+        star = locationData[course]["Troll Star"]
+        starRequirement = star["StarRequirement"]
+        requirements = star["Requirements"]
+        conditionalRequirements = star["ConditionalRequirements"]
+        fillForm(starRequirement, requirements, conditionalRequirements)
+        if(star["exists"]) {
+            $("#exists").prop("checked", true)
+        }
+    })
+
     $(document).on("click", ".level", function() {
         saveinfo()
         $("#actspecificspan").hide()
@@ -355,6 +392,10 @@ $(function() {
         return [requirements, conditionalRequirements]
     }
     function saveinfo() {
+        //settings
+        locationData["Other"]["Settings"].prog_key = parseInt($("#progressivekeys").find(":selected").val())
+
+        //star stuff
         if(!($(".selected")[0])) {
             return
         }
@@ -391,6 +432,16 @@ $(function() {
             cannon["Requirements"] = requirementarray[0]
             cannon["ConditionalRequirements"] = requirementarray[1]
             console.log(requirementarray[1])
+        } else if($(".selected").hasClass("trollstar")) {
+            course = $(".selected").closest("tr").find("p").text()
+            starId = parseInt($(".selected")[0].classList[1])
+            star = locationData[course]["Troll Star"]
+            star["exists"] = $("#exists").prop("checked")
+            star["StarRequirement"] = $("#starrequirement").val()
+            requirementarray = getRequirements()
+            star["Requirements"] = requirementarray[0]
+            star["ConditionalRequirements"] = requirementarray[1]
+            console.log(requirementarray[1])
         } else {
             course = $(".selected").closest("tr").find("p").text()
             starId = parseInt($(".selected")[0].classList[1])
@@ -413,6 +464,7 @@ $(function() {
     }
 
     $("#downloadbutton").click(function () {
+        
         saveinfo()
         var downloadString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(locationData))
         $("#downloadFileWhenDone").attr("href", downloadString)
@@ -442,7 +494,7 @@ $(function() {
         for(var i = 0; i < 7; i++) {
                 $("#"+ course_nospace).append("<td><img class=\"darkstar "+i+"\" src=images/dark_star.png /></td>")
         }
-        if(locationData["Other"]["Settings"].includes("cannons")){
+        if(locationData["Other"]["Settings"].cannons){
             $("#" + course_nospace).append("<td><img class=\"cannon\" src=images/cannon.png /></td>")
         }
         $("#cannonselect :selected").remove()
