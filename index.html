@@ -43,7 +43,11 @@
                         <input id="vc" type="checkbox">
                         <label for="vc">Requires Vanish Cap</label> <br>
                         <input id="mc" type="checkbox">
-                        <label for="mc">Requires Metal Cap</label> <br> <br>
+                        <label for="mc">Requires Metal Cap</label> <br>
+                        <span id="actspecificspan">
+                            <input id="actspecific" type="checkbox">
+                            <label for="actspecific" alt="Inherit requirements from previous acts">Act-specific star</label> <br> <br> 
+                        </span>
                         <div class="cannonrequirements" hidden>
                             <select name="cannons" class="cannons"></select> <br>
                             <button class="addcannonbutton">Add Cannon Requirement</button>
@@ -72,6 +76,16 @@
             </table> <br>
             <label for="filename">Hack Name</label>
             <input id="filename" type="text"> <br>
+            <label for="progressivekeys">Default Progressive Key Setting</label>
+            <select name="progressivekeys" id="progressivekeys" alt="The recommended option for the Progressive Keys option in the yaml. 
+            If key 2 is useless without key 1, enable it. 
+            if key 1 is useless without key 2 enable reversed. 
+            Otherwise, keep this setting off.">
+                <option value=0>Off</option>
+                <option value=1>On</option>
+                <option value=2>Reversed</option>
+            </select> <br> <br>
+
             <button id="downloadbutton">Download json file</button>
         </div>
 
