@@ -4,12 +4,17 @@ function camelize(str) {
     }).replace(/\s+/g, '')
 }
 
-function starExists(starList) {
+function starExists(data) {
+    starList = data["Stars"]
     for(var star in starList) {
         if(starList[star]["exists"]) {
             return true
         }
     }
+    if(data["Cannon"]["exists"] || data["Troll Star"]["exists"]) {
+        return true
+    }
+        
     return false
 }
 
@@ -153,7 +158,7 @@ $(function() {
                 }
 
                 var course_nospace = course.split(" ").join("_")
-                if(starExists(data["Stars"])) {
+                if(starExists(data)) {
                     var string = course + ": "
                     $("#coursestable").append("<tr id=\""+course_nospace+"\"></tr>")
                     $("#" + course_nospace).append("<td><p class=\"level\">" + course + "</p></tr>")
