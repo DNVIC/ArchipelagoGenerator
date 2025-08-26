@@ -1,5 +1,6 @@
 .selected {
     background-color: red;
+    outline: 2px solid red
 }
 .cannon {
     margin-left: 2.5px;
