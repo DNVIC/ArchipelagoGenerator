@@ -56,7 +56,8 @@ $(function() {
         "key2": "Key 2",
         "wc": "Wing Cap",
         "vc": "Vanish Cap",
-        "mc": "Metal Cap"
+        "mc": "Metal Cap",
+        "moat": "Castle Moat"
     }
     
     
@@ -201,7 +202,7 @@ $(function() {
                     console.log(i)
                 }
                 $("#Other").append("<td></td>")
-                $("#Other").append("<td></td>") //graphics stuff
+                //$("#Other").append("<td></td>") //graphics stuff
                 $("#Other").append("<td><div class=\"star 6\">Victory</div></td>")
             $("#coursesdiv").show()
             $("#jsmldiv").hide()
