@@ -115,6 +115,7 @@ $(function() {
                     }
                     locationData["Other"]["Settings"] = settings
                 }
+                $("#progressivekeys").val(locationData["Other"]["Settings"].prog_key)
             } else {
                 var result = JSON.parse(reader.result) // Parse the result into an object
                 courses = result.courseDescription.concat(result.secretDescription)
