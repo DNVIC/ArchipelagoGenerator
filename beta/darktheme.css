@@ -1,0 +1,41 @@
+.modified {
+    background-color: rgb(0,80,0);
+    outline: 2px solid rgb(0,80,0);
+}
+.selected {
+    background-color: maroon;
+    outline: 2px solid maroon
+}
+.cannon {
+    margin-left: 2.5px;
+}
+.removecannon {
+    color: grey;
+}
+.gray {
+    filter: grayscale() brightness(0.6)
+}
+
+#entrancetable, #entrancetable > tbody > tr, #entrancetable > tbody > tr > td {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-collapse: collapse;
+    padding: 2.5px;
+    text-align:center;
+}
+
+body {
+    background-color: rgb(35, 35, 35);
+    color: white
+}
+button {
+    background-color: rgb(75, 75, 75);
+    color: white
+}
+input[type=number], input[type=text] {
+    background-color: rgb(75, 75, 75);
+    color: white
+}
+input[type=number][disabled], input[type=text][disabled] {
+    background-color: gray;
+    color: lightgray
+}
