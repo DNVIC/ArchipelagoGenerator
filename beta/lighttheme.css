@@ -1,0 +1,28 @@
+
+.modified {
+    background-color: lime;
+    outline: 2px solid lime
+}
+.selected {
+    background-color: red;
+    outline: 2px solid red
+}
+.cannon {
+    margin-left: 2.5px;
+}
+.removecannon {
+    color: grey;
+}
+.gray {
+    filter: grayscale() brightness(0.75)
+}
+input[type=number][disabled], input[type=text][disabled] {
+    background-color: lightgray;
+    color: gray
+}
+#entrancetable, #entrancetable > tbody > tr, #entrancetable > tbody > tr > td {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-collapse: collapse;
+    padding: 2.5px;
+    text-align:center;
+}

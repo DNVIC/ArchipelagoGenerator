@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+        <link id="css" rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="extradialogstuff">
+            <label>
+                <input type="checkbox" id="darkmode">
+                Dark Mode
+            </label>
+            <label hidden>
+                <br>
+                <input type="checkbox" id="tickets">
+                Entrances (for level tickets)
+            </label>
+            <label hidden>
+                <br>
+                <input type="checkbox" id="moves">
+                Move rando support
+            </label>
+            <br><br>
+        </div>
+        <div id="macros" hidden>
+            <h3>Macros</h3>
+            <button id="addmacro">Add Macro</button> <br> <br>
+            <table id="macrotable" hidden>
+                <tr>
+                    <td>Macro Name</td>
+                    <td>Macro Requirement String</td>
+                </tr>
+                <tr id="macrotemplate" hidden>
+                    <td><input class="macroname" type=text size="20"></td>
+                    <td><input class="macro" type=text size="50"></td>
+                    <td><button class="removemacro">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="options" hidden>
+            <h3>Hack-specific options</h3>
+            <button id="addoption">Add Option</button> <br> <br>
+            <table id="optiontable" hidden>
+                <tr>
+                    <td>Option Name</td>
+                </tr>
+                <tr id="optiontemplate" hidden>
+                    <td><input class="option" type=text size="30"></td>
+                    <td><button class="removeoption">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="entrances" hidden>
+            <h3>Entrance list</h3>
+            <button id="addentrance">Add Entrance</button> <br> <br>
+            <table id="entrancetable" hidden>
+                <tr>
+                    <td>Source Level</td>
+                    <td>Source Zone</td>
+                    <td>Destination Level</td>
+                    <td>Destination Zone</td>
+                    <td>One-way</td>
+                    <td>Requirement String</td>
+                </tr>
+                <tr id="entrancetemplate" hidden>
+                    <td><select class="entrance"></select></td>
+                    <td><input class="area" type="number" min=1 step="1" size="2"></td>
+                    <td><select class="entrance"></select></td>
+                    <td><input class="area" type="number" min=1 step="1" size="2"></td>
+                    <td><input class="oneway" type="checkbox"></td>
+                    <td><input class="entrancerequirements" type=text size="50"></td>
+                    <td><button class="removeentrance">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="jsmldiv">
+            <p>Insert the jsml file, or a json file outputted previously</p>
+            <p>If you don't have a jsml file, you can get one <a href=https://github.com/StarDisplayLayouts/layouts>here</a></p>
+            <input type="file" id="jsmlfile" accept=".jsml,.json">
+            <br>
+            <br>
+            <button id="inputbutton">Create Thingy</button>
+        </div>
+
+        <div id="coursesdiv" hidden>
+            <table>
+                <tr id="mainrow">
+                    <td>
+                        <table id="coursestable"></table>
+                    </td>
+                    <td id="mainrequirements">
+                        <p id="selecteditem">Selected: None</p>
+                        <input id="exists" type="checkbox">
+                        <label for="exists"> Exists</label> <br> <br>
+                        <label hidden><input id="overworld" type="checkbox"> No ticket for this level <br> <br></label>
+                        <label for="requirements">Requirements</label> <br>
+                        <input id="requirements" type="text" size="60"> <br> <br>
+                        <label hidden>Level<br>
+                            <select id="level" class="entrance"></select> <br> <br>
+                        </label>
+                        <label hidden>Zone<br>
+                        <input id="area" type="number" size="2" min=1 step="1"></label>
+                    </td>
+                </tr>
+            </table> <br>
+            <label for="filename">Hack Name</label>
+            <input id="filename" type="text"> <br>
+            <label for="progressivekeys">Default Progressive Key Setting</label>
+            <select name="progressivekeys" id="progressivekeys" alt="The recommended option for the Progressive Keys option in the yaml. 
+            If key 2 is useless without key 1, enable it. 
+            if key 1 is useless without key 2 enable reversed. 
+            Otherwise, keep this setting off.">
+                <option value=0>Off</option>
+                <option value=1>On</option>
+                <option value=2>Reversed</option>
+            </select> <br> <br>
+
+            <button id="downloadbutton">Download json file</button>
+        </div>
+
+        <a id="downloadFileWhenDone" style="display:none"></a>
+    </body>
+</html> 
