@@ -645,6 +645,7 @@ $(function() {
         "Kick",
         "Punch",
         "Slidekick",
+        "Shell",
         "Actspecific"
     ]
 
