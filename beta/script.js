@@ -666,7 +666,7 @@ $(function() {
             if(evaluatedNestedMacro[0] != 0) {
                 return evaluatedNestedMacro
             }
-            macroData = macroData.replace(macros[macro], evaluatedNestedMacro[1])
+            macroData = macroData.replace(macros[macro], `(${evaluatedNestedMacro[1]})`)
         }
         return [0, macroData]
     }
