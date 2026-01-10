@@ -83,10 +83,15 @@ $(function() {
     darkmode = localStorage.getItem("darkmode")
     setDarkMode(darkmode === 'true' /*javascript is a beautiful language*/)
 
-    defaultOptions = [ //difficulty options
+    defaultOptions = [ //difficulty options + common glitches/exploits
         "reasonable",
         "obscure",
-        "hard"
+        "hard",
+        "Bomb Clips",
+        "BLJs",
+        "Chuckya Clips",
+        "Bomb Walking",
+        "Star/Key Door Skips"
     ]
     
     offsetToCourseName = {
@@ -418,7 +423,6 @@ $(function() {
         course = $(this).closest("tr").find("p").text()
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
-        $(".removecannon").trigger("click")
         $("#actspecificspan").hide()
 
         if(!$("#exists").length)  {
@@ -444,7 +448,6 @@ $(function() {
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
         starId = parseInt($(this)[0].classList[1])
-        $(".removecannon").trigger("click")
         if(course == "Other") {
             
             if($("#tickets").prop("checked")) {
@@ -486,7 +489,6 @@ $(function() {
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
         starId = parseInt($(this)[0].classList[1])
-        $(".removecannon").trigger("click")
         $("#actspecificspan").hide()
         $("#exists").removeAttr("disabled")
         $("#selecteditem").text("Selected: " + course + " Troll Star")
@@ -505,7 +507,6 @@ $(function() {
         $(".selected").removeClass("selected")
         $(this).addClass("selected")
         starId = parseInt($(this)[0].classList[1])
-        $(".removecannon").trigger("click")
         $("#actspecificspan").hide()
         $("#exists").removeAttr("disabled")
         $("#selecteditem").text("Selected: " + course + " Sign")
@@ -951,6 +952,7 @@ $(function() {
         clone.find(".area").eq(1).val(parseInt(area2))
         clone.find(".oneway").prop("checked", oneway)
         clone.find(".entrancerequirements").val(requirementString)
+        clone.find(".removeentrancetemplate").removeClass("removeentrancetemplate")
         clone.show()
         $("#entrancetable").show()
     }
@@ -960,6 +962,9 @@ $(function() {
     })
 
     $(".removeentrance").click(function () {
+        if($(this).hasClass("removeentrancetemplate")) {
+            return //dont want to remove the template
+        }
         $(this).parent().parent().remove()
         if($(".entrancedata").length == 0) {
             $("#entrancetable").hide()
@@ -992,5 +997,28 @@ $(function() {
             $("#entrances").hide()
             $("#area").parent().hide()
         }
+    })
+
+    $("#sortentrances").click(function () {
+        let entrances = getEntrances()
+        $(".removeentrance").trigger("click")
+        entrances = entrances.sort(function(a, b) {
+            if(a[0] != b[0]) {
+                return Object.values(offsetToCourseName).indexOf(a[0]) - Object.values(offsetToCourseName).indexOf(b[0])
+            }
+            if(a[1] != b[1]) {
+                return parseInt(a[1]) - parseInt(b[1])
+            }
+            if(a[2] != b[2]) {
+                return Object.values(offsetToCourseName).indexOf(a[2]) - Object.values(offsetToCourseName).indexOf(b[2])
+            }
+            if(a[3] != b[3]) {
+                return parseInt(a[3]) - parseInt(b[3])
+            }
+            return 0
+        })
+        entrances.forEach(entrance => {
+            addEntrance(...entrance)
+        })
     })
 })
