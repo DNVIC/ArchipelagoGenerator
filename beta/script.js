@@ -91,7 +91,7 @@ $(function() {
         "BLJs",
         "Chuckya Clips",
         "Bomb Walking",
-        "Star/Key Door Skips"
+        "Major Skips"
     ]
     
     offsetToCourseName = {
