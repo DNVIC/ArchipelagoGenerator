@@ -281,6 +281,12 @@ $(function() {
                         }
                     }
                 }
+                
+                for(const[course, data] of Object.entries(locationData)) {
+                    if (course != "Other") { // other course doesnt actually exist
+                        $(".entrance").append(`<option>${course}</option>`)
+                    }
+                }
             }
             
             for(const[course, data] of Object.entries(locationData)) {
