@@ -259,6 +259,7 @@ $(function() {
                     }
                 }
                 locationData["Other"]["Settings"].prog_key = 0
+                locationData["Other"]["Settings"]["Version"] = "v0.5"
                 $("#progressivekeys").val(locationData["Other"]["Settings"].prog_key)
                 for (var i in courses) {
                     if(offset = courses[i].offset) {
