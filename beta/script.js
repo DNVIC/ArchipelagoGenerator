@@ -91,7 +91,8 @@ $(function() {
         "BLJs",
         "Chuckya Clips",
         "Bomb Walking",
-        "Major Skips"
+        "Major Skips",
+        "Framewalks"
     ]
     
     offsetToCourseName = {
@@ -408,6 +409,10 @@ $(function() {
         $("#requirements").removeAttr("disabled")
         $("#area").removeAttr("disabled")
         $("#requirements").val(data["Requirements"])
+        if(!data["Comment"]) {
+            data["Comment"] = ""
+        }
+        $("#comment").val(data["Comment"])
         if(!data["Area"]) {
             data["Area"] = "1" //default
         }
@@ -558,24 +563,28 @@ $(function() {
             course["StarRequirement"] = $("#starrequirement").val()
             course["Requirements"] = $("#requirements").val()
             course["Overworld"] = $("#overworld").prop("checked")
+            course["Comment"] = $("#comment").val()
         } else if($(".selected").hasClass("cannon")) {
             course = $(".selected").closest("tr").find("p").text()
             cannon = locationData[course]["Cannon"]
             cannon["exists"] = $("#exists").prop("checked")            
             cannon["Requirements"] = $("#requirements").val()
             cannon["Area"] = $("#area").val()
+            cannon["Comment"] = $("#comment").val()
         } else if($(".selected").hasClass("trollstar")) {
             course = $(".selected").closest("tr").find("p").text()
             star = locationData[course]["Troll Star"]
             star["exists"] = $("#exists").prop("checked")
             star["Requirements"] = $("#requirements").val()
             star["Area"] = $("#area").val()
+            star["Comment"] = $("#comment").val()
         } else if($(".selected").hasClass("sign")) {
             course = $(".selected").closest("tr").find("p").text()
             star = locationData[course]["Sign"]
             star["exists"] = $("#exists").prop("checked")
             star["Requirements"] = $("#requirements").val()
             star["Area"] = $("#area").val()
+            star["Comment"] = $("#comment").val()
         } else {
             course = $(".selected").closest("tr").find("p").text()
             starId = parseInt($(".selected")[0].classList[1])
@@ -589,6 +598,7 @@ $(function() {
             }
             star["Requirements"] = $("#requirements").val()
             star["Area"] = $("#area").val()
+            star["Comment"] = $("#comment").val()
         }
 
         //graphics stuff
@@ -720,7 +730,7 @@ $(function() {
                 if(!/^[0-9]+$/.test(item_text)) { //checks if the text contains numbers from 0-9; does not use \d since some implementations include number characters in other numeral systems
                     return `Invalid number of stars required: ${item_text}`
                 }
-            } else if (item_text.startsWith("!")) {
+            } else if (item_text.startsWith("!") || item_text.startsWith("?")) {
                 if (!(options.includes(item_text.slice(1)))) {
                     return `Invalid option: ${item_text.slice(1)}`
                 }

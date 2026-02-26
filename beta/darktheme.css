@@ -31,11 +31,11 @@ button {
     background-color: rgb(75, 75, 75);
     color: white
 }
-input[type=number], input[type=text] {
+input[type=number], input[type=text], textarea {
     background-color: rgb(75, 75, 75);
     color: white
 }
-input[type=number][disabled], input[type=text][disabled] {
+input[type=number][disabled], input[type=text][disabled], textarea[disabled] {
     background-color: gray;
     color: lightgray
 }
