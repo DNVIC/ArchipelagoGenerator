@@ -895,7 +895,7 @@ $(function() {
         for (let entrance of entrances) {
             stringresult = parseRequirementString(entrance[4])
             if (stringresult != "") {
-                alert(`Entrance ${entrances.indexOf(entrance)} invalid: ${stringresult}`)
+                alert(`Entrance ${entrances.indexOf(entrance + 1)} invalid: ${stringresult}`)
                 return false
             }
         }
