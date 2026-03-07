@@ -3,9 +3,78 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="script.js"></script>
-        <link rel="stylesheet" href="style.css">
+        <link id="css" rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="extradialogstuff">
+            <label>
+                <input type="checkbox" id="darkmode">
+                Dark Mode
+            </label>
+            <label hidden>
+                <br>
+                <input type="checkbox" id="tickets">
+                Entrances (for level tickets)
+            </label>
+            <label hidden>
+                <br>
+                <input type="checkbox" id="moves">
+                Move rando support
+            </label>
+            <br><br>
+        </div>
+        <div id="macros" hidden>
+            <h3>Macros</h3>
+            <button id="addmacro">Add Macro</button> <br> <br>
+            <table id="macrotable" hidden>
+                <tr>
+                    <td>Macro Name</td>
+                    <td>Macro Requirement String</td>
+                </tr>
+                <tr id="macrotemplate" hidden>
+                    <td><input class="macroname" type=text size="20"></td>
+                    <td><input class="macro" type=text size="100"></td>
+                    <td><button class="removemacro">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="options" hidden>
+            <h3>Hack-specific options</h3>
+            <button id="addoption">Add Option</button> <br> <br>
+            <table id="optiontable" hidden>
+                <tr>
+                    <td>Option Name</td>
+                </tr>
+                <tr id="optiontemplate" hidden>
+                    <td><input class="option" type=text size="30"></td>
+                    <td><button class="removeoption">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="entrances" hidden>
+            <h3>Entrance list</h3>
+            <button id="addentrance">Add Entrance</button> <br> 
+            <button id="sortentrances">Sort Entrances</button> <br> <br>
+            <table id="entrancetable" hidden>
+                <tr>
+                    <td>Source Level</td>
+                    <td>Source Zone</td>
+                    <td>Destination Level</td>
+                    <td>Destination Zone</td>
+                    <td>One-way</td>
+                    <td>Requirement String</td>
+                </tr>
+                <tr id="entrancetemplate" hidden>
+                    <td><select class="entrance"></select></td>
+                    <td><input class="area" type="number" min=1 step="1" size="2"></td>
+                    <td><select class="entrance"></select></td>
+                    <td><input class="area" type="number" min=1 step="1" size="2"></td>
+                    <td><input class="oneway" type="checkbox"></td>
+                    <td><input class="entrancerequirements" type=text size="100"></td>
+                    <td><button class="removeentrancetemplate removeentrance">Remove</button></td>
+                </tr>
+            </table>
+        </div>
         <div id="jsmldiv">
             <p>Insert the jsml file, or a json file outputted previously</p>
             <p>If you don't have a jsml file, you can get one <a href=https://github.com/StarDisplayLayouts/layouts>here</a></p>
@@ -13,15 +82,6 @@
             <br>
             <br>
             <button id="inputbutton">Create Thingy</button>
-        </div>
-
-        <div id="extradialogstuff">
-            <span id="cannonspan" hidden>
-                <label for="cannonselect">Add a level (incase it has a cannon but no stars)</label>
-                <select name="cannonselect" id="cannonselect"></select> <br>
-                <button id="cannonselectbutton">Add level</button>
-            </span>
-            <br><br>
         </div>
 
         <div id="coursesdiv" hidden>
@@ -32,48 +92,18 @@
                     </td>
                     <td id="mainrequirements">
                         <p id="selecteditem">Selected: None</p>
-                        <label for="starrequirement">Star Requirement</label> <br>
-                        <input type="number" id="starrequirement"> <br>
-                        <input id="key1" type="checkbox">
-                        <label for="key1">Requires Key 1</label> <br>
-                        <input id="key2" type="checkbox">
-                        <label for="key2">Requires Key 2</label> <br>
-                        <input id="wc" type="checkbox">
-                        <label for="wc">Requires Wing Cap</label> <br>
-                        <input id="vc" type="checkbox">
-                        <label for="vc">Requires Vanish Cap</label> <br>
-                        <input id="mc" type="checkbox">
-                        <label for="mc">Requires Metal Cap</label> <br>
-                        <input id="moat" type="checkbox">
-                        <label for="moat">Requires Moat</label> <br>
-                        <span id="actspecificspan">
-                            <input id="actspecific" type="checkbox">
-                            <label for="actspecific" alt="Inherit requirements from previous acts">Act-specific star</label> <br> <br> 
-                        </span>
-                        <div class="cannonrequirements" hidden>
-                            <select name="cannons" class="cannons"></select> <br>
-                            <button class="addcannonbutton">Add Cannon Requirement</button>
-                            <div id="cannontemplate" hidden><span>Template Cannon </span><a class="removecannon">✖</a></div>
-                        </div>
-                        <button id="conditionalrequirementbutton" title="These requirements are for cases where you need (for example) either a wing cap or a metal cap. You would add 2 conditional requirements, one for wing cap and one for metal cap. The requirements above are hard requirements.">Add Conditional Requirement</button>
-                        <br>
-                        <!--<button id="saveinfobutton">Save Star Info</button>-->
-                    </td>
-                    <td id="conditionalrequirementtemplate" hidden>
-                        <p>Conditional Requirement</p>
-                        <label>Star Requirement <br> <input type="number" class="starrequirement"> <br></label>
-                        
-                        <label><input class="key1" type="checkbox"> Requires Key 1</label> <br>
-                        <label><input class="key2" type="checkbox"> Requires Key 2</label> <br>
-                        <label><input class="wc" type="checkbox"> Requires Wing Cap</label> <br>
-                        <label><input class="vc" type="checkbox"> Requires Vanish Cap</label> <br>
-                        <label><input class="mc" type="checkbox"> Requires Metal Cap</label> <br>
-                        <label><input class="moat" type="checkbox"> Requires Moat</label> <br>
-                        <div class="cannonrequirements" hidden>
-                            <select name="cannons" class="cannons"></select> <br>
-                            <button class="addcannonbutton">Add Cannon Requirement</button>
-                        </div>
-                        <button class="removebutton">Remove Conditional Requirement</button>
+                        <input id="exists" type="checkbox">
+                        <label for="exists"> Exists</label> <br> <br>
+                        <label hidden><input id="overworld" type="checkbox"> No ticket for this level <br> <br></label>
+                        <label for="requirements">Requirements</label> <br>
+                        <span class="resizable"><input id="requirements" type="text" size="60"></span> <br> <br>
+                        <label for="comment">Comment</label> <br>
+                        <textarea id="comment" type="text" rows="3" cols="60"></textarea> <br> <br>
+                        <label hidden>Level<br>
+                            <select id="level" class="entrance"></select> <br> <br>
+                        </label>
+                        <label hidden>Zone<br>
+                        <input id="area" type="number" size="2" min=1 step="1"></label>
                     </td>
                 </tr>
             </table> <br>
