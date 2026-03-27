@@ -68,8 +68,18 @@ function convertOldRequirementsToString(data) {
     return requirementStrings.join(" and ")
 }
 
+var jsonedited = false
+
+function onBeforeUnloadHandler() {
+    if(jsonedited) {
+        console.log(jsonedited)
+        return "JSON edited but not saved, are you sure you want to leave the page?"
+    }
+    return ""
+}
 
 $(function() {
+
     function setDarkMode(darkmode) {
         if (darkmode) {
             $("#css").attr("href", "darktheme.css")
@@ -175,6 +185,7 @@ $(function() {
     $("#inputbutton").click(function() {
         var file = $('#jsmlfile').prop('files')[0]
         var reader = new FileReader()
+
         reader.addEventListener('load', function() {
             var filename = $('#jsmlfile').val().split('\\').pop()
             if(filename.endsWith(".json")) {
@@ -580,6 +591,7 @@ $(function() {
     function saveinfo() {
         //settings
         locationData["Other"]["Settings"].prog_key = parseInt($("#progressivekeys").find(":selected").val())
+        jsonedited = true
 
         //star stuff
         if(!($(".selected")[0])) {
