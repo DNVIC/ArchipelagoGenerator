@@ -901,6 +901,11 @@ $(function() {
                     alert(`${course} Troll Star Requirement String Invalid: ${stringresult}`)
                     return false
                 }
+                stringresult = parseRequirementString(data?.["Sign"]?.["Requirements"])
+                if(stringresult != "") {
+                    alert(`${course} Sign Requirement String Invalid: ${stringresult}`)
+                    return false
+                }
             }
         }
         let entrances = getEntrances()
