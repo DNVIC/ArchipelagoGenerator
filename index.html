@@ -25,7 +25,8 @@
         </div>
         <div id="macros" hidden>
             <h3>Macros</h3>
-            <button id="addmacro">Add Macro</button> <br> <br>
+            <button id="addmacro">Add Macro</button> <button id="importmacro">Import Macros</button> <br> <br>
+            <input type="file" id="macrofile" accept=".json" hidden>
             <table id="macrotable" hidden>
                 <tr>
                     <td>Macro Name</td>
@@ -96,7 +97,7 @@
                         <label for="exists"> Exists</label> <br> <br>
                         <label hidden><input id="overworld" type="checkbox"> No ticket for this level <br> <br></label>
                         <label for="requirements">Requirements</label> <br>
-                        <span class="resizable"><input id="requirements" type="text" size="60"></span> <br> <br>
+                        <textarea id="requirements" type="text" rows="3" cols="60"></textarea> <br> <br>
                         <label for="comment">Comment</label> <br>
                         <textarea id="comment" type="text" rows="3" cols="60"></textarea> <br> <br>
                         <label hidden>Level<br>
