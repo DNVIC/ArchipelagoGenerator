@@ -181,6 +181,8 @@ $(function() {
         "Overworld": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false}], "Cannon": {"exists": false}, "Troll Star": {"exists": false}, "Sign": {"exists": false}},
         "Other": {"Stars": [{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": false},{"exists": true}], "Settings":{}}, // last is always true because it's victory and you need a victory condition.
     }
+
+    fileLoaded = false
     
     $("#inputbutton").click(function() {
         var file = $('#jsmlfile').prop('files')[0]
@@ -188,6 +190,7 @@ $(function() {
 
         reader.addEventListener('load', function() {
             var filename = $('#jsmlfile').val().split('\\').pop()
+            $("#filename").val(filename.slice(0, -5)) // the only supported files are jsml and json which have the same length
             if(filename.endsWith(".json")) {
                 locationData = JSON.parse(reader.result)
                 if(!(reader.result.includes("Settings"))) {             //super backwards compatibility, may be liable to remove in the future because this is so far back
@@ -204,8 +207,7 @@ $(function() {
                             locationData[course]["Sign"] = {"exists": false}
                         }
                     }
-                    if (!("Version" in locationData["Other"]["Settings"])) {
-                        locationData["Other"]["Settings"]["Version"] = "v0.5" //maybe i should have done this a while ago
+                    if (!("Version" in locationData["Other"]["Settings"])) { //maybe i should have done this a while ago
                         for (const[course, data] of Object.entries(locationData)) {
                             
                             if(!("Troll Star" in data)) { // somehow some JSONS *still* do not have some course with troll stars (probably due to people manually editing them for some reason (PLEASE dont do this, tell me if you run into a problem with the editor))
@@ -235,6 +237,7 @@ $(function() {
                             }
                         }
                     }
+                    locationData["Other"]["Settings"]["Version"] = "v0.6"
                     locationData["Other"]["Settings"] = settings
                     if(locationData["Other"]["Macros"]) {
                         for (const [key, value] of Object.entries(locationData["Other"]["Macros"])) {
@@ -433,6 +436,25 @@ $(function() {
                 $("#moves").prop("checked", true)
             } else {
                 $("#moves").prop("checked", false)
+            }
+        })
+        reader.readAsText(file)
+        fileLoaded = true
+    })
+
+    $("#importmacro").click(function() {
+        $("#macrofile").click()
+    })
+    $("#macrofile").change(function() {
+        var file = $('#macrofile').prop('files')[0]
+        var reader = new FileReader()
+
+        reader.addEventListener('load', function() {
+            otherData = JSON.parse(reader.result)
+            for (const [key, value] of Object.entries(otherData["Other"]["Macros"])) {
+                if (!locationData["Other"]["Macros"].hasOwnProperty(key)) { //dont add duplicates
+                    addMacro(key, value)
+                }
             }
         })
         reader.readAsText(file)
@@ -804,6 +826,8 @@ $(function() {
         output = output.replaceAll(regex, '&')
         regex = / or /gi // matches ' or '
         output = output.replaceAll(regex, '|')
+        output = output.replaceAll("\n", "") // remove newlines
+        output = output.replaceAll(" ", "") // remove spaces
         invalidcharacters = /[^0-9\(\)\|&]+/g //matches any non-numeric character which isn't ()|&
         invalid = output.match(invalidcharacters)
         if(invalid) {
@@ -919,8 +943,7 @@ $(function() {
         return true
     }
 
-
-    $("#downloadbutton").click(function () {
+    function savejson() {
         saveinfo()
         if(parseRequirementStrings()) {
             locationData["Other"]["Macros"] = getMacros()
@@ -932,6 +955,10 @@ $(function() {
             $("#downloadFileWhenDone").attr("download", camelize($("#filename").val()) + ".json")
             $("#downloadFileWhenDone")[0].click()
         }
+    }
+
+    $("#downloadbutton").click(function () {
+        savejson()
     })
 
     $(".removebutton").click(function () {
@@ -1094,4 +1121,49 @@ $(function() {
             addEntrance(...entrance)
         })
     })
+
+    $(window).bind('keydown', function(e) {
+        if (e.ctrlKey || e.metaKey) {
+            if(String.fromCharCode(e.which).toLowerCase() == 's' && fileLoaded) {
+                e.preventDefault()
+                savejson()
+            }
+        }
+    })
+
+    $("body").on('keydown', '#requirements', function(e) { //tab indent handler
+        if (e.which == 9) {
+            e.preventDefault()
+            var text = $("#requirements").val()
+            var splittext = text.split("\n")
+            var startline = 0
+            var endline = 0
+            var totallength = 0
+            var selectionStart = e.target.selectionStart
+            var selectionEnd = e.target.selectionEnd
+            for (var i = 0; i < splittext.length; i++) {
+                totallength += splittext[i].length + 1
+                if (totallength > selectionEnd) {
+                    break
+                }
+                if (totallength <= selectionStart) {
+                    startline++
+                }
+                endline++
+            }
+            var newtext = []
+            for (var i = 0; i < splittext.length; i++) {
+                if (i >= startline && i <= endline) {
+                    newtext.push("    " + splittext[i])
+                }
+                else {
+                    newtext.push(splittext[i])
+                }
+            }
+            $("#requirements").val(newtext.join("\n"))
+            $("#requirements")[0].focus()
+            $("#requirements")[0].setSelectionRange(selectionStart + 4, selectionEnd + (endline == startline ? 4 : 8)) //reselect the selection
+        }
+    })
+
 })
